@@ -10,6 +10,8 @@ import {
   NotificationNumber,
 } from './styles';
 
+import ShopItem from '../../components/ShopItem';
+
 import CartImage from '../../../assets/images/cart-icon.svg';
 import FilterImage from '../../../assets/images/arrow-down-icon.svg';
 

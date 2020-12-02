@@ -16,7 +16,7 @@ export const Header = styled.View`
 `;
 
 export const FilterButton = styled.TouchableOpacity`
-  background-color: rgba(194, 233, 255, 0.45);
+  background-color: #afe2ff;
   width: 52px;
   height: 52px;
   border-radius: 50px;
