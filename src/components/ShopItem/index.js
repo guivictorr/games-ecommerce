@@ -1,5 +1,7 @@
 import React from 'react';
 
+import images from '../../utils/images';
+
 import {
   ShopItemContainer,
   ShopItemImage,
@@ -7,19 +9,22 @@ import {
   ShopItemPrice,
   ShopItemButton,
   ShopItemButtonText,
+  ShopItemContent,
 } from './styles';
 
-import productItem from '../../../assets/images/the-witcher-iii-wild-hunt.png';
-
-export default function Home() {
+const ShopItem = ({ title, price }) => {
   return (
     <ShopItemContainer>
-      <ShopItemImage source={productItem} />
-      <ShopItemName>The Witcher 3</ShopItemName>
-      <ShopItemPrice>R$200,00</ShopItemPrice>
-      <ShopItemButton>
-        <ShopItemButtonText>Adicionar ao carrinho</ShopItemButtonText>
-      </ShopItemButton>
+      <ShopItemContent>
+        <ShopItemName>{title}</ShopItemName>
+        <ShopItemPrice>R${price}</ShopItemPrice>
+        <ShopItemButton>
+          <ShopItemButtonText>Adicionar ao carrinho</ShopItemButtonText>
+        </ShopItemButton>
+      </ShopItemContent>
+      <ShopItemImage source={images[title]} />
     </ShopItemContainer>
   );
-}
+};
+
+export default ShopItem;

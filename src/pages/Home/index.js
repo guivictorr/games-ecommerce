@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
 import {
@@ -15,7 +15,9 @@ import ShopItem from '../../components/ShopItem';
 import CartImage from '../../../assets/images/cart-icon.svg';
 import FilterImage from '../../../assets/images/arrow-down-icon.svg';
 
-export default function Home() {
+import data from '../../data/products.json';
+
+const Home = () => {
   return (
     <HomeContainer>
       <Header>
@@ -29,7 +31,17 @@ export default function Home() {
           <CartImage height={32} width={32} />
         </CartButton>
       </Header>
-      <ShopItem />
+      <FlatList
+        data={data}
+        renderItem={({ item }) => (
+          <ShopItem title={item.name} price={item.price.toFixed(2)} />
+        )}
+        keyExtractor={item => item.id}
+        style={{ width: '90%', marginTop: 20 }}
+        showsVerticalScrollIndicator={false}
+      />
     </HomeContainer>
   );
-}
+};
+
+export default Home;

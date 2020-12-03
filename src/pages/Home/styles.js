@@ -3,10 +3,12 @@ import styled from 'styled-components/native';
 export const HomeContainer = styled.View`
   flex: 1;
   background-color: #f9fcff;
+  align-items: center;
 `;
 
 export const Header = styled.View`
   height: 100px;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
