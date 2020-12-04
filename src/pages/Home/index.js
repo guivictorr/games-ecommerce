@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { FlatList } from 'react-native';
+import { ProductsContext } from '../../context/productsContext';
 
 import {
   HomeContainer,
@@ -15,13 +16,13 @@ import ShopItem from '../../components/ShopItem';
 import CartImage from '../../../assets/images/cart-icon.svg';
 import FilterImage from '../../../assets/images/arrow-down-icon.svg';
 
-import data from '../../data/products.json';
-
 const Home = () => {
+  const { products } = useContext(ProductsContext);
+
   return (
     <HomeContainer>
       <Header>
-        <FilterButton>
+        <FilterButton onPress={() => handleProductsOrder('ascPrice')}>
           <FilterImage height={22} width={22} />
         </FilterButton>
         <CartButton>
@@ -32,7 +33,7 @@ const Home = () => {
         </CartButton>
       </Header>
       <FlatList
-        data={data}
+        data={products}
         renderItem={({ item }) => (
           <ShopItem title={item.name} price={item.price.toFixed(2)} />
         )}
