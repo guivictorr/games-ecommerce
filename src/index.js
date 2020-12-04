@@ -1,11 +1,11 @@
 import React from 'react';
 import { ProductsProvider } from './context/productsContext';
-import Home from './pages/Home';
+import Routes from './routes';
 
 const Main = () => {
   return (
     <ProductsProvider>
-      <Home />
+      <Routes />
     </ProductsProvider>
   );
 };
