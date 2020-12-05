@@ -26,7 +26,8 @@ export const FilterText = styled.Text`
 `;
 
 export const Separator = styled.View`
-  background-color: #afe2ff;
+  background-color: #afefff;
+  opacity: 0.6;
   min-height: 2px;
   flex: 1;
 `;

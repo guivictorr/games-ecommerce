@@ -46,7 +46,7 @@ const Home = ({ navigation }) => {
           <ShopItem title={item.name} price={item.price.toFixed(2)} />
         )}
         keyExtractor={item => item.name}
-        style={{ width: '90%', marginTop: 20 }}
+        style={{ width: '90%' }}
         showsVerticalScrollIndicator={false}
       />
     </HomeContainer>
