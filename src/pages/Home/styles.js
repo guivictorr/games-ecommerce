@@ -13,11 +13,24 @@ export const Header = styled.View`
   justify-content: space-between;
   align-items: center;
   background-color: #edf8ff;
-  margin-top: 30px;
+  margin-top: 35px;
   padding: 0 25px;
 `;
 
 export const FilterButton = styled.TouchableOpacity`
+  background-color: #afe2ff;
+  border-radius: 50px;
+  padding: 8px 16px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const FilterButtonText = styled.Text`
+  font-size: 16px;
+  color: #2a3239;
+`;
+
+export const CartButton = styled.TouchableOpacity`
   background-color: #afe2ff;
   width: 52px;
   height: 52px;
@@ -25,8 +38,6 @@ export const FilterButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 `;
-
-export const CartButton = styled(FilterButton)``;
 
 export const CartImage = styled.Image`
   width: 32px;

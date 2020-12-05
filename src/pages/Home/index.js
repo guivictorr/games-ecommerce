@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { FlatList } from 'react-native';
-import { ProductsContext } from '../../context/productsContext';
 
 import {
   HomeContainer,
@@ -9,21 +8,29 @@ import {
   CartButton,
   Notification,
   NotificationNumber,
+  FilterButtonText,
 } from './styles';
 
 import ShopItem from '../../components/ShopItem';
 
 import CartImage from '../../../assets/images/cart-icon.svg';
-import FilterImage from '../../../assets/images/arrow-down-icon.svg';
+import { ProductsContext } from '../../context/productsContext';
 
-const Home = () => {
-  const { products } = useContext(ProductsContext);
+const Home = ({ navigation }) => {
+  const { products, sortedProducts, setSortedProducts } = useContext(
+    ProductsContext,
+  );
+
+  const handleFiltersPageNavigation = useCallback(() => {
+    navigation.navigate('Filters');
+    setSortedProducts([]);
+  }, [navigation]);
 
   return (
     <HomeContainer>
       <Header>
-        <FilterButton onPress={() => handleProductsOrder('ascPrice')}>
-          <FilterImage height={22} width={22} />
+        <FilterButton onPress={handleFiltersPageNavigation}>
+          <FilterButtonText>Filtros</FilterButtonText>
         </FilterButton>
         <CartButton>
           <Notification>
@@ -34,10 +41,11 @@ const Home = () => {
       </Header>
       <FlatList
         data={products}
+        extraData={sortedProducts}
         renderItem={({ item }) => (
           <ShopItem title={item.name} price={item.price.toFixed(2)} />
         )}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.name}
         style={{ width: '90%', marginTop: 20 }}
         showsVerticalScrollIndicator={false}
       />
