@@ -1,12 +1,12 @@
 import React from 'react';
-import { ProductsProvider } from './context/productsContext';
+import AppProvider from './context';
 import Routes from './routes';
 
 const Main = () => {
   return (
-    <ProductsProvider>
+    <AppProvider>
       <Routes />
-    </ProductsProvider>
+    </AppProvider>
   );
 };
 
