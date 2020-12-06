@@ -4,7 +4,6 @@ import { FlatList } from 'react-native';
 
 import {
   HomeContainer,
-  Header,
   CartButton,
   Notification,
   NotificationNumber,
@@ -14,6 +13,7 @@ import ShopItem from '../../components/ShopItem';
 
 import CartImage from '../../../assets/images/cart-icon.svg';
 import RoundedButton from '../../components/RoundedButton';
+import Header from '../../components/Header';
 
 const Home = ({ navigation }) => {
   const { products, sortedProducts, setSortedProducts } = useContext(

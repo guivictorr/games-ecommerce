@@ -4,7 +4,6 @@ import { FlatList } from 'react-native';
 
 import {
   CartContainer,
-  CartHeader,
   CartTotalValue,
   CartSubTotalValue,
   CartShipValue,
@@ -16,20 +15,21 @@ import {
 
 import CartItem from '../../components/CartItem';
 import RoundedButton from '../../components/RoundedButton';
+import Header from '../../components/Header';
 
 const Cart = ({ navigation }) => {
   const { products } = useContext(ProductsContext);
 
   return (
     <CartContainer>
-      <CartHeader>
+      <Header>
         <RoundedButton text="Voltar" action={() => navigation.goBack()} />
-      </CartHeader>
+      </Header>
       <FlatList
         data={products}
         keyExtractor={item => item.name}
         renderItem={({ item }) => <CartItem title={item.name} />}
-        style={{ width: '100%', marginTop: 20 }}
+        style={{ width: '100%' }}
       />
       <CartFooter>
         <CartCheckOutButton>
