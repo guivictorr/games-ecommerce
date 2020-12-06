@@ -7,8 +7,8 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cartData, setCartData] = useState([]);
   const [cartExtraData, setCartExtraData] = useState([]);
-  const [cartSubTotal, setCartSubTotal] = useState('');
-  const [cartShipValue, setCartShipValue] = useState('');
+  const [cartSubTotal, setCartSubTotal] = useState(0);
+  const [cartShipValue, setCartShipValue] = useState(0);
 
   const handleAddProductsToCart = useCallback(
     id => {
@@ -18,14 +18,16 @@ export const CartProvider = ({ children }) => {
       if (verifyProduct) {
         verifyProduct.amount++;
         handleCartSubTotal();
+        handleCartShipValue();
         return;
       }
 
       newProduct.amount = 1;
       setCartData([...cartData, newProduct]);
       handleCartSubTotal();
+      handleCartShipValue();
     },
-    [setCartData, products, cartData],
+    [setCartData, products, cartData, handleCartSubTotal, handleCartShipValue],
   );
 
   const handleRemoveCartProducts = useCallback(
@@ -42,23 +44,48 @@ export const CartProvider = ({ children }) => {
       cartData[productIndex].amount -= 1;
       setCartExtraData([...cartData]);
       handleCartSubTotal();
+      handleCartShipValue();
     },
-    [cartData, setCartData, setCartExtraData],
+    [
+      cartData,
+      setCartData,
+      setCartExtraData,
+      handleCartSubTotal,
+      handleCartShipValue,
+    ],
   );
 
   const handleCartSubTotal = useCallback(() => {
     let subTotal = 0;
 
-    cartData.map(item => {
-      subTotal += item.amount * item.price;
+    cartData.map(product => {
+      subTotal += product.amount * product.price;
     });
 
     setCartSubTotal(subTotal.toFixed(2));
   }, [cartData, setCartSubTotal]);
 
+  const handleCartShipValue = useCallback(() => {
+    let amount = 0;
+    let shipValue = 0;
+
+    cartData.map(product => {
+      amount += product.amount;
+    });
+
+    if (cartSubTotal > 250) {
+      setCartShipValue(shipValue.toFixed(2));
+      return;
+    }
+
+    shipValue = amount * 10;
+    setCartShipValue(shipValue.toFixed(2));
+  }, [cartData, setCartShipValue, cartSubTotal]);
+
   useEffect(() => {
     handleCartSubTotal();
-  }, [cartData, cartExtraData]);
+    handleCartShipValue();
+  }, [cartData, handleCartShipValue]);
 
   return (
     <CartContext.Provider
@@ -68,6 +95,7 @@ export const CartProvider = ({ children }) => {
         handleRemoveCartProducts,
         cartExtraData,
         cartSubTotal,
+        cartShipValue,
       }}
     >
       {children}
