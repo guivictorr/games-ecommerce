@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useState } from 'react';
+import React, { createContext, useCallback, useEffect, useState } from 'react';
 
 import products from '../data/products.json';
 
@@ -7,6 +7,8 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cartData, setCartData] = useState([]);
   const [cartExtraData, setCartExtraData] = useState([]);
+  const [cartSubTotal, setCartSubTotal] = useState('');
+  const [cartShipValue, setCartShipValue] = useState('');
 
   const handleAddProductsToCart = useCallback(
     id => {
@@ -15,11 +17,13 @@ export const CartProvider = ({ children }) => {
 
       if (verifyProduct) {
         verifyProduct.amount++;
+        handleCartSubTotal();
         return;
       }
 
       newProduct.amount = 1;
       setCartData([...cartData, newProduct]);
+      handleCartSubTotal();
     },
     [setCartData, products, cartData],
   );
@@ -37,9 +41,24 @@ export const CartProvider = ({ children }) => {
 
       cartData[productIndex].amount -= 1;
       setCartExtraData([...cartData]);
+      handleCartSubTotal();
     },
     [cartData, setCartData, setCartExtraData],
   );
+
+  const handleCartSubTotal = useCallback(() => {
+    let subTotal = 0;
+
+    cartData.map(item => {
+      subTotal += item.amount * item.price;
+    });
+
+    setCartSubTotal(subTotal.toFixed(2));
+  }, [cartData, setCartSubTotal]);
+
+  useEffect(() => {
+    handleCartSubTotal();
+  }, [cartData, cartExtraData]);
 
   return (
     <CartContext.Provider
@@ -48,6 +67,7 @@ export const CartProvider = ({ children }) => {
         handleAddProductsToCart,
         handleRemoveCartProducts,
         cartExtraData,
+        cartSubTotal,
       }}
     >
       {children}

@@ -18,7 +18,7 @@ import RoundedButton from '../../components/RoundedButton';
 import Header from '../../components/Header';
 
 const Cart = ({ navigation }) => {
-  const { cartData, cartExtraData } = useContext(CartContext);
+  const { cartData, cartExtraData, cartSubTotal } = useContext(CartContext);
 
   return (
     <CartContainer>
@@ -40,7 +40,7 @@ const Cart = ({ navigation }) => {
         </CartCheckOutButton>
         <CartFooterValues>
           <CartTotalValue>Total: R$200,00</CartTotalValue>
-          <CartSubTotalValue>Subtotal: R$100,00</CartSubTotalValue>
+          <CartSubTotalValue>Subtotal: R${cartSubTotal}</CartSubTotalValue>
           <CartShipValue>Frete: R$100,00</CartShipValue>
         </CartFooterValues>
       </CartFooter>
