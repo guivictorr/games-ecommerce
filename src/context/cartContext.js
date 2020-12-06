@@ -9,6 +9,7 @@ export const CartProvider = ({ children }) => {
   const [cartExtraData, setCartExtraData] = useState([]);
   const [cartSubTotal, setCartSubTotal] = useState(0);
   const [cartShipValue, setCartShipValue] = useState(0);
+  const [cartTotalValue, setCartTotalValue] = useState(0);
 
   const handleAddProductsToCart = useCallback(
     id => {
@@ -85,7 +86,8 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     handleCartSubTotal();
     handleCartShipValue();
-  }, [cartData, handleCartShipValue]);
+    setCartTotalValue(+cartSubTotal + +cartShipValue);
+  }, [cartData, handleCartShipValue, handleCartSubTotal, cartShipValue]);
 
   return (
     <CartContext.Provider
@@ -96,6 +98,7 @@ export const CartProvider = ({ children }) => {
         cartExtraData,
         cartSubTotal,
         cartShipValue,
+        cartTotalValue,
       }}
     >
       {children}

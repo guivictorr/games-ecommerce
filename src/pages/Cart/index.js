@@ -18,9 +18,13 @@ import RoundedButton from '../../components/RoundedButton';
 import Header from '../../components/Header';
 
 const Cart = ({ navigation }) => {
-  const { cartData, cartExtraData, cartSubTotal, cartShipValue } = useContext(
-    CartContext,
-  );
+  const {
+    cartData,
+    cartExtraData,
+    cartSubTotal,
+    cartShipValue,
+    cartTotalValue,
+  } = useContext(CartContext);
 
   return (
     <CartContainer>
@@ -41,7 +45,7 @@ const Cart = ({ navigation }) => {
           <CartCheckOutButtonText>Finalizar</CartCheckOutButtonText>
         </CartCheckOutButton>
         <CartFooterValues>
-          <CartTotalValue>Total: R$200</CartTotalValue>
+          <CartTotalValue>Total: R${cartTotalValue}</CartTotalValue>
           <CartSubTotalValue>Subtotal: R${cartSubTotal}</CartSubTotalValue>
           <CartShipValue>Frete: R${cartShipValue}</CartShipValue>
         </CartFooterValues>
