@@ -1,3 +1,4 @@
+import { RectButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 
 export const HomeContainer = styled.View`
@@ -16,7 +17,7 @@ export const Header = styled.View`
   padding: 0 25px;
 `;
 
-export const FilterButton = styled.TouchableOpacity`
+export const FilterButton = styled(RectButton)`
   background-color: #afe2ff;
   border-radius: 50px;
   padding: 8px 16px;
@@ -53,7 +54,7 @@ export const Notification = styled.View`
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 10;
+  z-index: 1;
 `;
 
 export const NotificationNumber = styled.Text`

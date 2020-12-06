@@ -26,13 +26,18 @@ const Home = ({ navigation }) => {
     setSortedProducts([]);
   }, [navigation]);
 
+  const handleCartPageNavigation = useCallback(() => {
+    navigation.navigate('Cart');
+    setSortedProducts([]);
+  }, [navigation]);
+
   return (
     <HomeContainer>
       <Header>
         <FilterButton onPress={handleFiltersPageNavigation}>
           <FilterButtonText>Filtros</FilterButtonText>
         </FilterButton>
-        <CartButton>
+        <CartButton onPress={handleCartPageNavigation}>
           <Notification>
             <NotificationNumber>3</NotificationNumber>
           </Notification>
