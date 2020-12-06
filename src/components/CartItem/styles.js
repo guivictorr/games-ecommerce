@@ -23,4 +23,7 @@ export const CartItemName = styled.Text`
   margin-left: 20px;
 `;
 
-export const CartItemAmount = styled.Text``;
+export const CartItemAmount = styled.Text`
+  font-size: 18px;
+  color: #2a3239;
+`;

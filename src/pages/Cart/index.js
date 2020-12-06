@@ -18,7 +18,7 @@ import RoundedButton from '../../components/RoundedButton';
 import Header from '../../components/Header';
 
 const Cart = ({ navigation }) => {
-  const { cartData } = useContext(CartContext);
+  const { cartData, cartExtraData } = useContext(CartContext);
 
   return (
     <CartContainer>
@@ -27,9 +27,10 @@ const Cart = ({ navigation }) => {
       </Header>
       <FlatList
         data={cartData}
+        extraData={cartExtraData}
         keyExtractor={item => String(item.id)}
         renderItem={({ item }) => (
-          <CartItem title={item.name} amount={item.amount} />
+          <CartItem title={item.name} amount={item.amount} id={item.id} />
         )}
         style={{ width: '100%' }}
       />

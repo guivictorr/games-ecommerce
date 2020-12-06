@@ -6,6 +6,7 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartData, setCartData] = useState([]);
+  const [cartExtraData, setCartExtraData] = useState([]);
 
   const handleAddProductsToCart = useCallback(
     id => {
@@ -23,8 +24,32 @@ export const CartProvider = ({ children }) => {
     [setCartData, products, cartData],
   );
 
+  const handleRemoveCartProducts = useCallback(
+    id => {
+      const productIndex = cartData.findIndex(item => item.id === id);
+      const amount = cartData[productIndex].amount;
+
+      if (amount === 1) {
+        cartData.splice(productIndex, 1);
+        setCartData([...cartData]);
+        return;
+      }
+
+      cartData[productIndex].amount -= 1;
+      setCartExtraData([...cartData]);
+    },
+    [cartData, setCartData, setCartExtraData],
+  );
+
   return (
-    <CartContext.Provider value={{ cartData, handleAddProductsToCart }}>
+    <CartContext.Provider
+      value={{
+        cartData,
+        handleAddProductsToCart,
+        handleRemoveCartProducts,
+        cartExtraData,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
