@@ -98,7 +98,7 @@ export const CartProvider = ({ children }) => {
         cartExtraData,
         cartSubTotal,
         cartShipValue,
-        cartTotalValue,
+        cartTotalValue: cartTotalValue.toFixed(2),
       }}
     >
       {children}
