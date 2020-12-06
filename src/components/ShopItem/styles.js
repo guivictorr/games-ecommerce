@@ -30,16 +30,7 @@ export const ShopItemPrice = styled.Text`
   color: #afe2ff;
 `;
 
-export const ShopItemButton = styled.TouchableOpacity`
-  background-color: #afe2ff;
-  border-radius: 50px;
-  padding: 8px 12px;
-  margin-top: 20px;
-  align-items: center;
+export const ShopItemContent = styled.View`
+  justify-content: space-between;
+  height: 80%;
 `;
-
-export const ShopItemButtonText = styled.Text`
-  color: #2a3239;
-`;
-
-export const ShopItemContent = styled.View``;

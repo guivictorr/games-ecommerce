@@ -17,13 +17,3 @@ export const CartHeader = styled.View`
   margin-top: 35px;
   padding: 0 25px;
 `;
-
-export const BackButton = styled(RectButton)`
-  background-color: #afe2ff;
-  border-radius: 50px;
-  padding: 8px 16px;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const BackButtonText = styled.Text``;

@@ -1,20 +1,19 @@
 import React, { useCallback, useContext } from 'react';
+import { ProductsContext } from '../../context/productsContext';
 import { FlatList } from 'react-native';
 
 import {
   HomeContainer,
   Header,
-  FilterButton,
   CartButton,
   Notification,
   NotificationNumber,
-  FilterButtonText,
 } from './styles';
 
 import ShopItem from '../../components/ShopItem';
 
 import CartImage from '../../../assets/images/cart-icon.svg';
-import { ProductsContext } from '../../context/productsContext';
+import RoundedButton from '../../components/RoundedButton';
 
 const Home = ({ navigation }) => {
   const { products, sortedProducts, setSortedProducts } = useContext(
@@ -34,9 +33,7 @@ const Home = ({ navigation }) => {
   return (
     <HomeContainer>
       <Header>
-        <FilterButton onPress={handleFiltersPageNavigation}>
-          <FilterButtonText>Filtros</FilterButtonText>
-        </FilterButton>
+        <RoundedButton text="Filtros" action={handleFiltersPageNavigation} />
         <CartButton onPress={handleCartPageNavigation}>
           <Notification>
             <NotificationNumber>3</NotificationNumber>

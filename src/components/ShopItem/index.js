@@ -7,10 +7,10 @@ import {
   ShopItemImage,
   ShopItemName,
   ShopItemPrice,
-  ShopItemButton,
-  ShopItemButtonText,
   ShopItemContent,
 } from './styles';
+
+import RoundedButton from '../RoundedButton';
 
 const ShopItem = ({ title, price }) => {
   return (
@@ -18,9 +18,7 @@ const ShopItem = ({ title, price }) => {
       <ShopItemContent>
         <ShopItemName>{title}</ShopItemName>
         <ShopItemPrice>R${price}</ShopItemPrice>
-        <ShopItemButton>
-          <ShopItemButtonText>Adicionar ao carrinho</ShopItemButtonText>
-        </ShopItemButton>
+        <RoundedButton text="Adicionar ao carrinho" />
       </ShopItemContent>
       <ShopItemImage source={images[title]} />
     </ShopItemContainer>

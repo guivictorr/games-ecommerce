@@ -16,7 +16,7 @@ export const FilterListTitle = styled.Text`
   margin-top: 20px;
 `;
 
-export const FilterOption = styled(RectButton)`
+export const FilterOption = styled.TouchableOpacity`
   min-width: 100%;
   padding: 16px;
 `;

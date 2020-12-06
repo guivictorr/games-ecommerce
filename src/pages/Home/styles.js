@@ -17,19 +17,6 @@ export const Header = styled.View`
   padding: 0 25px;
 `;
 
-export const FilterButton = styled(RectButton)`
-  background-color: #afe2ff;
-  border-radius: 50px;
-  padding: 8px 16px;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const FilterButtonText = styled.Text`
-  font-size: 16px;
-  color: #2a3239;
-`;
-
 export const CartButton = styled.TouchableOpacity`
   background-color: #afe2ff;
   width: 52px;

@@ -1,15 +1,11 @@
 import React, { useContext } from 'react';
+import { ProductsContext } from '../../context/productsContext';
 import { FlatList } from 'react-native';
 
-import {
-  CartContainer,
-  CartHeader,
-  BackButton,
-  BackButtonText,
-} from './styles';
+import { CartContainer, CartHeader } from './styles';
 
 import CartItem from '../../components/CartItem';
-import { ProductsContext } from '../../context/productsContext';
+import RoundedButton from '../../components/RoundedButton';
 
 const Cart = ({ navigation }) => {
   const { products } = useContext(ProductsContext);
@@ -17,9 +13,7 @@ const Cart = ({ navigation }) => {
   return (
     <CartContainer>
       <CartHeader>
-        <BackButton onPress={() => navigation.goBack()}>
-          <BackButtonText>Voltar</BackButtonText>
-        </BackButton>
+        <RoundedButton text="Voltar" action={() => navigation.goBack()} />
       </CartHeader>
       <FlatList
         data={products}
