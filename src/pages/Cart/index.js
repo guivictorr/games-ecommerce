@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ProductsContext } from '../../context/productsContext';
+import { CartContext } from '../../context/cartContext';
 import { FlatList } from 'react-native';
 
 import {
@@ -18,7 +18,7 @@ import RoundedButton from '../../components/RoundedButton';
 import Header from '../../components/Header';
 
 const Cart = ({ navigation }) => {
-  const { products } = useContext(ProductsContext);
+  const { cartData } = useContext(CartContext);
 
   return (
     <CartContainer>
@@ -26,9 +26,11 @@ const Cart = ({ navigation }) => {
         <RoundedButton text="Voltar" action={() => navigation.goBack()} />
       </Header>
       <FlatList
-        data={products}
-        keyExtractor={item => item.name}
-        renderItem={({ item }) => <CartItem title={item.name} />}
+        data={cartData}
+        keyExtractor={item => String(item.id)}
+        renderItem={({ item }) => (
+          <CartItem title={item.name} amount={item.amount} />
+        )}
         style={{ width: '100%' }}
       />
       <CartFooter>

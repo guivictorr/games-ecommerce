@@ -1,5 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { ProductsContext } from '../../context/productsContext';
+import { CartContext } from '../../context/cartContext';
 import { FlatList } from 'react-native';
 
 import {
@@ -16,6 +17,7 @@ import RoundedButton from '../../components/RoundedButton';
 import Header from '../../components/Header';
 
 const Home = ({ navigation }) => {
+  const { cartData } = useContext(CartContext);
   const { products, sortedProducts, setSortedProducts } = useContext(
     ProductsContext,
   );
@@ -36,7 +38,7 @@ const Home = ({ navigation }) => {
         <RoundedButton text="Filtros" action={handleFiltersPageNavigation} />
         <CartButton onPress={handleCartPageNavigation}>
           <Notification>
-            <NotificationNumber>3</NotificationNumber>
+            <NotificationNumber>{cartData.length}</NotificationNumber>
           </Notification>
           <CartImage height={32} width={32} />
         </CartButton>
@@ -45,7 +47,11 @@ const Home = ({ navigation }) => {
         data={products}
         extraData={sortedProducts}
         renderItem={({ item }) => (
-          <ShopItem title={item.name} price={item.price.toFixed(2)} />
+          <ShopItem
+            title={item.name}
+            price={item.price.toFixed(2)}
+            id={item.id}
+          />
         )}
         keyExtractor={item => item.name}
         style={{ width: '90%' }}

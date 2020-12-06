@@ -2,12 +2,18 @@ import React from 'react';
 
 import images from '../../utils/images';
 
-import { CartItemContainer, CartItemName, CartItemImage } from './styles';
+import {
+  CartItemContainer,
+  CartItemName,
+  CartItemImage,
+  CartItemAmount,
+} from './styles';
 
-const CartItem = ({ title }) => {
+const CartItem = ({ title, amount }) => {
   return (
     <CartItemContainer>
       <CartItemImage source={images[title]} resizeMode="contain" />
+      <CartItemAmount>{amount}x</CartItemAmount>
       <CartItemName>{title}</CartItemName>
     </CartItemContainer>
   );
