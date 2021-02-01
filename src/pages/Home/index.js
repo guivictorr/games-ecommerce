@@ -43,8 +43,10 @@ const Home = ({ navigation }) => {
       <FlatList
         data={products}
         extraData={sortedProducts}
-        keyExtractor={item => item.name}
+        keyExtractor={item => item.id}
         showsVerticalScrollIndicator={false}
+        numColumns={2}
+        contentContainerStyle={{ alignItems: 'center' }}
         renderItem={({ item }) => (
           <ShopItem
             title={item.name}

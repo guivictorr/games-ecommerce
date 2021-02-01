@@ -26,5 +26,6 @@ module.exports = {
     'no-console': ['error', { allow: ['tron'] }],
     'global-require': 'off',
     'react/prop-types': 'off',
+    'import/no-named-as-default': 'off',
   },
 };
