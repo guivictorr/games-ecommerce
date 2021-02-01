@@ -1,5 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppProvider from './context';
 import Routes from './routes';
 
@@ -16,9 +17,11 @@ const theme = {
 
 const Main = () => (
   <AppProvider>
-    <ThemeProvider theme={theme}>
-      <Routes />
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider theme={theme}>
+        <Routes />
+      </ThemeProvider>
+    </SafeAreaProvider>
   </AppProvider>
 );
 
