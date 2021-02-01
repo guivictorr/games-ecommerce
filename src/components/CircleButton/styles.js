@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 const CircleButtonContainer = styled.TouchableOpacity`
-  background-color: #afe2ff;
+  background-color: ${({ theme }) => theme.colors.primary};
   width: 52px;
   height: 52px;
   border-radius: 50px;
@@ -11,7 +11,7 @@ const CircleButtonContainer = styled.TouchableOpacity`
 
 CircleButtonContainer.Notification = styled.View`
   border-radius: 50px;
-  background-color: #ff5757;
+  background-color: ${({ theme }) => theme.colors.error};
   width: 20px;
   height: 20px;
   align-items: center;
@@ -23,7 +23,7 @@ CircleButtonContainer.Notification = styled.View`
 `;
 
 CircleButtonContainer.NotificationNumber = styled.Text`
-  color: #f5f5f5;
+  color: ${({ theme }) => theme.colors.contrastText};
 `;
 
 export default CircleButtonContainer;
