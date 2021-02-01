@@ -1,15 +1,18 @@
 import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 
-export const RoundedButtonContainer = styled(RectButton)`
-  background-color: #afe2ff;
-  border-radius: 50px;
-  padding: 8px 16px;
+const RoundedButtonContainer = styled(RectButton)`
+  background-color: ${({ theme }) => theme.colors.background};
+  border-radius: ${({ theme }) => theme.borderRadius};
   align-items: center;
   justify-content: center;
+  padding: 6px 14px;
+  width: 100%;
 `;
 
-export const RoundedButtonText = styled.Text`
-  font-size: 16px;
-  color: #2a3239;
+RoundedButtonContainer.Title = styled.Text`
+  font-size: 12px;
+  color: ${({ theme }) => theme.colors.contrastText};
 `;
+
+export default RoundedButtonContainer;

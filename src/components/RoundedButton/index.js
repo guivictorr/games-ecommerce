@@ -1,13 +1,11 @@
 import React from 'react';
 
-import { RoundedButtonContainer, RoundedButtonText } from './styles';
+import RoundedButtonContainer from './styles';
 
-const RoundedButton = ({ text, action }) => {
-  return (
-    <RoundedButtonContainer onPress={action}>
-      <RoundedButtonText>{text}</RoundedButtonText>
-    </RoundedButtonContainer>
-  );
-};
+const RoundedButton = ({ text, action }) => (
+  <RoundedButtonContainer onPress={action}>
+    <RoundedButtonContainer.Title>{text}</RoundedButtonContainer.Title>
+  </RoundedButtonContainer>
+);
 
 export default RoundedButton;
