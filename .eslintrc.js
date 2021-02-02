@@ -27,5 +27,6 @@ module.exports = {
     'global-require': 'off',
     'react/prop-types': 'off',
     'import/no-named-as-default': 'off',
+    camelcase: 'off',
   },
 };
