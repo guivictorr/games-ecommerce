@@ -1,33 +1,32 @@
 import styled from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
 
-export const FiltersContainer = styled.View`
+const FiltersContainer = styled.View`
   flex: 1;
   background-color: #f9fcff;
   align-items: center;
   margin-top: 35px;
 `;
 
-export const FilterListTitle = styled.Text`
-  font-size: 36px;
-  align-self: flex-start;
-  margin-left: 15px;
-  font-weight: bold;
-  margin-top: 20px;
+FiltersContainer.Title = styled.Text`
+  font-size: 48px;
+  color: ${({ theme }) => theme.colors.contrastText};
+  font-family: ${({ theme }) => theme.ubuntuBold};
 `;
 
-export const FilterOption = styled.TouchableOpacity`
+FiltersContainer.Option = styled.TouchableOpacity`
   min-width: 100%;
   padding: 16px;
 `;
 
-export const FilterText = styled.Text`
+FiltersContainer.Text = styled.Text`
   font-size: 16px;
 `;
 
-export const Separator = styled.View`
+FiltersContainer.Separator = styled.View`
   background-color: #afefff;
   opacity: 0.6;
   min-height: 2px;
   flex: 1;
 `;
+
+export default FiltersContainer;
