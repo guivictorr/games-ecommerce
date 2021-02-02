@@ -7,6 +7,7 @@ import {
   Ubuntu_500Medium,
   Ubuntu_700Bold,
 } from '@expo-google-fonts/ubuntu';
+import { StatusBar } from 'react-native';
 import AppProvider from './context';
 import Routes from './routes';
 
@@ -37,6 +38,7 @@ const Main = () => {
     <AppProvider>
       <SafeAreaProvider>
         <ThemeProvider theme={theme}>
+          <StatusBar backgroundColor={theme.colors.background} />
           <Routes />
         </ThemeProvider>
       </SafeAreaProvider>

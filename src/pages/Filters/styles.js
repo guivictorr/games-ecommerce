@@ -4,7 +4,6 @@ const FiltersContainer = styled.View`
   flex: 1;
   background-color: #f9fcff;
   align-items: center;
-  margin-top: 35px;
 `;
 
 FiltersContainer.Title = styled.Text`
