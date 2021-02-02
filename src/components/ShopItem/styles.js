@@ -19,11 +19,13 @@ ShopItemContainer.Image = styled.Image`
 ShopItemContainer.Name = styled.Text`
   color: ${({ theme }) => theme.colors.background};
   font-size: 12px;
+  font-family: ${({ theme }) => theme.ubuntuMedium};
 `;
 
 ShopItemContainer.Price = styled.Text`
   color: ${({ theme }) => theme.colors.background};
   font-size: 24px;
+  font-family: ${({ theme }) => theme.ubuntuBold};
 `;
 
 export default ShopItemContainer;

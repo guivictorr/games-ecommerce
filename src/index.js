@@ -25,8 +25,8 @@ const Main = () => {
       error: '#ff3a5e',
     },
     borderRadius: '6px',
-    ubuntuBold: Ubuntu_700Bold,
-    ubuntuMedium: Ubuntu_500Medium,
+    ubuntuBold: 'Ubuntu_700Bold',
+    ubuntuMedium: 'Ubuntu_500Medium',
   };
 
   if (!fontsLoaded) {

@@ -13,6 +13,7 @@ const RoundedButtonContainer = styled(RectButton)`
 RoundedButtonContainer.Title = styled.Text`
   font-size: 12px;
   color: ${({ theme }) => theme.colors.contrastText};
+  font-family: ${({ theme }) => theme.ubuntuMedium};
 `;
 
 export default RoundedButtonContainer;
