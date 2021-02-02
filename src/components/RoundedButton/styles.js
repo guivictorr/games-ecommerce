@@ -6,7 +6,7 @@ const RoundedButtonContainer = styled(RectButton)`
   border-radius: ${({ theme }) => theme.borderRadius};
   align-items: center;
   justify-content: center;
-  padding: 6px 14px;
+  padding: 8px 14px;
   width: 100%;
 `;
 

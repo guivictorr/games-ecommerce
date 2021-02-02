@@ -19,7 +19,7 @@ const Main = () => {
 
   const theme = {
     colors: {
-      background: '#0d0d0d',
+      background: '#111111',
       primary: '#ff6523',
       contrastText: '#e5e5e5',
       success: '#3affac',

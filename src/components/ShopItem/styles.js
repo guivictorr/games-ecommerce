@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 
 export const ShopItemContainer = styled.View`
-  width: 180px;
-  height: 240px;
+  width: 190px;
+  height: 280px;
   background-color: ${({ theme }) => theme.colors.primary};
   padding: 10px 15px;
   border-radius: ${({ theme }) => theme.borderRadius};
