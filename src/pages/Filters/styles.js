@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 const FiltersContainer = styled.View`
   flex: 1;
-  background-color: #f9fcff;
+  background-color: ${({ theme }) => theme.colors.background};
   align-items: center;
 `;
 
@@ -18,12 +18,12 @@ FiltersContainer.Option = styled.TouchableOpacity`
 `;
 
 FiltersContainer.Text = styled.Text`
-  font-size: 16px;
+  font-size: 18px;
+  color: ${({ theme }) => theme.colors.contrastText};
 `;
 
 FiltersContainer.Separator = styled.View`
-  background-color: #afefff;
-  opacity: 0.6;
+  background-color: ${({ theme }) => theme.colors.primary};
   min-height: 2px;
   flex: 1;
 `;
