@@ -1,21 +1,16 @@
 import React, { useContext } from 'react';
-import { CartContext } from '../../context/cartContext';
 import { FlatList } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import { CartContext } from '../../context/cartContext';
 
-import {
-  CartContainer,
-  CartTotalValue,
-  CartSubTotalValue,
-  CartShipValue,
-  CartFooter,
-  CartCheckOutButton,
-  CartCheckOutButtonText,
-  CartFooterValues,
-} from './styles';
+import CartContainer from './styles';
 
 import CartItem from '../../components/CartItem';
-import RoundedButton from '../../components/RoundedButton';
 import Header from '../../components/Header';
+import CircleButton from '../../components/CircleButton';
+import RoundedButton from '../../components/RoundedButton';
+import FiltersContainer from '../Filters/styles';
+import HeaderContainer from '../../components/Header/styles';
 
 const Cart = ({ navigation }) => {
   const {
@@ -29,7 +24,10 @@ const Cart = ({ navigation }) => {
   return (
     <CartContainer>
       <Header>
-        <RoundedButton text="Voltar" action={() => navigation.goBack()} />
+        <CircleButton onPress={() => navigation.goBack()}>
+          <AntDesign name="arrowleft" size={32} color="#e5e5e5" />
+        </CircleButton>
+        <HeaderContainer.Title>Carrinho</HeaderContainer.Title>
       </Header>
       <FlatList
         data={cartData}
@@ -40,16 +38,6 @@ const Cart = ({ navigation }) => {
         )}
         style={{ width: '100%' }}
       />
-      <CartFooter>
-        <CartCheckOutButton>
-          <CartCheckOutButtonText>Finalizar</CartCheckOutButtonText>
-        </CartCheckOutButton>
-        <CartFooterValues>
-          <CartTotalValue>Total: R${cartTotalValue}</CartTotalValue>
-          <CartSubTotalValue>Subtotal: R${cartSubTotal}</CartSubTotalValue>
-          <CartShipValue>Frete: R${cartShipValue}</CartShipValue>
-        </CartFooterValues>
-      </CartFooter>
     </CartContainer>
   );
 };

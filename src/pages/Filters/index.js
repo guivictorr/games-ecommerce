@@ -3,6 +3,7 @@ import { FlatList } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import CircleButton from '../../components/CircleButton';
 import Header from '../../components/Header';
+import HeaderContainer from '../../components/Header/styles';
 import { ProductsContext } from '../../context/productsContext';
 
 import FiltersContainer from './styles';
@@ -47,7 +48,7 @@ const Filters = ({ navigation }) => {
         <CircleButton onPress={() => navigation.goBack()}>
           <AntDesign name="arrowleft" size={32} color="#e5e5e5" />
         </CircleButton>
-        <FiltersContainer.Title>Filtrar Por</FiltersContainer.Title>
+        <HeaderContainer.Title>Filtrar Por</HeaderContainer.Title>
       </Header>
       <FlatList
         data={data}

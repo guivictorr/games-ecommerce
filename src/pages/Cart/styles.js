@@ -1,9 +1,9 @@
 import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 
-export const CartContainer = styled.View`
+const CartContainer = styled.View`
   flex: 1;
-  background-color: #f9fcff;
+  background-color: ${({ theme }) => theme.colors.background};
   align-items: center;
 `;
 
@@ -45,3 +45,5 @@ export const CartSubTotalValue = styled.Text`
 export const CartShipValue = styled.Text`
   font-size: 14px;
 `;
+
+export default CartContainer;
