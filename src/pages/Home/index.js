@@ -1,19 +1,13 @@
 import React, { useCallback, useContext } from 'react';
+import { FlatList } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 import { ProductsContext } from '../../context/productsContext';
 import { CartContext } from '../../context/cartContext';
-import { FlatList } from 'react-native';
 
-import {
-  HomeContainer,
-  CartButton,
-  Notification,
-  NotificationNumber,
-} from './styles';
+import { HomeContainer } from './styles';
 
 import ShopItem from '../../components/ShopItem';
-
-import CartImage from '../../../assets/images/cart-icon.svg';
-import RoundedButton from '../../components/RoundedButton';
+import CircleButton from '../../components/CircleButton';
 import Header from '../../components/Header';
 
 const Home = ({ navigation }) => {
@@ -35,17 +29,24 @@ const Home = ({ navigation }) => {
   return (
     <HomeContainer>
       <Header>
-        <RoundedButton text="Filtros" action={handleFiltersPageNavigation} />
-        <CartButton onPress={handleCartPageNavigation}>
-          <Notification>
-            <NotificationNumber>{cartData.length}</NotificationNumber>
-          </Notification>
-          <CartImage height={32} width={32} />
-        </CartButton>
+        <CircleButton onPress={handleFiltersPageNavigation}>
+          <AntDesign name="filter" size={32} color="white" />
+        </CircleButton>
+        <CircleButton
+          hasNotification
+          notificationElement={cartData.length}
+          onPress={handleCartPageNavigation}
+        >
+          <AntDesign name="shoppingcart" size={32} color="white" />
+        </CircleButton>
       </Header>
       <FlatList
         data={products}
         extraData={sortedProducts}
+        keyExtractor={item => item.id}
+        showsVerticalScrollIndicator={false}
+        numColumns={2}
+        contentContainerStyle={{ alignItems: 'center' }}
         renderItem={({ item }) => (
           <ShopItem
             title={item.name}
@@ -53,9 +54,6 @@ const Home = ({ navigation }) => {
             id={item.id}
           />
         )}
-        keyExtractor={item => item.name}
-        style={{ width: '90%' }}
-        showsVerticalScrollIndicator={false}
       />
     </HomeContainer>
   );

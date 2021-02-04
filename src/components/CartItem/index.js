@@ -3,27 +3,24 @@ import { CartContext } from '../../context/cartContext';
 
 import images from '../../utils/images';
 
-import {
-  CartItemContainer,
-  CartItemName,
-  CartItemImage,
-  CartItemAmount,
-} from './styles';
+import CartItemContainer from './styles';
 
-import RoundedButton from '../../components/RoundedButton';
-
-const CartItem = ({ title, amount, id }) => {
+const CartItem = ({ title, amount, id, price }) => {
   const { handleRemoveCartProducts } = useContext(CartContext);
 
   return (
     <CartItemContainer>
-      <CartItemImage source={images[title]} resizeMode="contain" />
-      <CartItemAmount>{amount}x</CartItemAmount>
-      <CartItemName>{title}</CartItemName>
-      <RoundedButton
-        text="Excluir"
-        action={() => handleRemoveCartProducts(id)}
-      />
+      <CartItemContainer.Image source={images[title]} resizeMode="contain" />
+      <CartItemContainer.Content>
+        <CartItemContainer.Name numberOfLines={1} ellipsizeMode="tail">
+          {title}
+        </CartItemContainer.Name>
+        <CartItemContainer.Text>R${price.toFixed(2)}</CartItemContainer.Text>
+        <CartItemContainer.Amount>{amount}x</CartItemContainer.Amount>
+        <CartItemContainer.Button onPress={() => handleRemoveCartProducts(id)}>
+          <CartItemContainer.ButtonText>Remover</CartItemContainer.ButtonText>
+        </CartItemContainer.Button>
+      </CartItemContainer.Content>
     </CartItemContainer>
   );
 };

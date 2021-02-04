@@ -3,13 +3,7 @@ import { CartContext } from '../../context/cartContext';
 
 import images from '../../utils/images';
 
-import {
-  ShopItemContainer,
-  ShopItemImage,
-  ShopItemName,
-  ShopItemPrice,
-  ShopItemContent,
-} from './styles';
+import ShopItemContainer from './styles';
 
 import RoundedButton from '../RoundedButton';
 
@@ -18,15 +12,13 @@ const ShopItem = ({ title, price, id }) => {
 
   return (
     <ShopItemContainer>
-      <ShopItemContent>
-        <ShopItemName>{title}</ShopItemName>
-        <ShopItemPrice>R${price}</ShopItemPrice>
-        <RoundedButton
-          text="Adicionar ao carrinho"
-          action={() => handleAddProductsToCart(id)}
-        />
-      </ShopItemContent>
-      <ShopItemImage source={images[title]} />
+      <ShopItemContainer.Image source={images[title]} />
+      <ShopItemContainer.Name>{title}</ShopItemContainer.Name>
+      <ShopItemContainer.Price>R${price}</ShopItemContainer.Price>
+      <RoundedButton
+        text="Adicionar ao carrinho"
+        action={() => handleAddProductsToCart(id)}
+      />
     </ShopItemContainer>
   );
 };
