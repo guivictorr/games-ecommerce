@@ -8,8 +8,6 @@ import CartContainer from './styles';
 import CartItem from '../../components/CartItem';
 import Header from '../../components/Header';
 import CircleButton from '../../components/CircleButton';
-import RoundedButton from '../../components/RoundedButton';
-import FiltersContainer from '../Filters/styles';
 import HeaderContainer from '../../components/Header/styles';
 
 const Cart = ({ navigation }) => {
@@ -43,6 +41,22 @@ const Cart = ({ navigation }) => {
         )}
         style={{ width: '100%' }}
       />
+      <CartContainer.Checkout>
+        <CartContainer.Button onPress={() => navigation.goBack()}>
+          <CartContainer.ButtonText>Finalizar</CartContainer.ButtonText>
+        </CartContainer.Button>
+        <CartContainer.PricesBox>
+          <CartContainer.Price fontSize={26}>
+            Total: R${cartTotalValue}
+          </CartContainer.Price>
+          <CartContainer.Price fontSize={18}>
+            Subtotal: R${cartSubTotal}
+          </CartContainer.Price>
+          <CartContainer.Price fontSize={16}>
+            Frete: R${cartShipValue}
+          </CartContainer.Price>
+        </CartContainer.PricesBox>
+      </CartContainer.Checkout>
     </CartContainer>
   );
 };

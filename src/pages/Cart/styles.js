@@ -1,49 +1,43 @@
-import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
+import styled from 'styled-components/native';
 
 const CartContainer = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
-  align-items: center;
 `;
 
-export const CartFooter = styled.View`
-  height: 100px;
+CartContainer.Checkout = styled.View`
+  height: 130px;
+  padding: 30px 15px;
+  background: ${({ theme }) => theme.colors.primary};
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 24px;
-  width: 100%;
 `;
 
-export const CartCheckOutButton = styled(RectButton)`
-  height: 50px;
-  width: 150px;
-  background-color: #4bd865;
-  border-radius: 50px;
+CartContainer.Button = styled(RectButton)`
+  width: 145px;
+  height: 65px;
+  padding: 20px 25px;
+  background: ${({ theme }) => theme.colors.background};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  margin-right: 5px;
   align-items: center;
-  justify-content: center;
 `;
 
-export const CartCheckOutButtonText = styled.Text`
-  color: #f5f5f5;
-  font-weight: bold;
+CartContainer.ButtonText = styled.Text`
+  font-size: 20px;
+  font-family: ${({ theme }) => theme.ubuntuBold};
+  color: ${({ theme }) => theme.colors.contrastText};
 `;
 
-export const CartFooterValues = styled.View`
-  min-width: 100px;
-  align-items: flex-end;
-`;
+CartContainer.PricesBox = styled.View``;
 
-export const CartTotalValue = styled.Text`
-  font-size: 24px;
-  font-weight: bold;
-`;
-export const CartSubTotalValue = styled.Text`
-  font-size: 18px;
-`;
-export const CartShipValue = styled.Text`
-  font-size: 14px;
+CartContainer.Price = styled.Text`
+  font-size: ${({ fontSize }) => `${fontSize}px`};
+  color: ${({ theme }) => theme.colors.background};
+  font-family: ${({ theme }) => theme.ubuntuBold};
+  align-self: flex-end;
 `;
 
 export default CartContainer;
