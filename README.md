@@ -1,6 +1,9 @@
 <h1 align='center'>🛒 Games Ecommerce</h1>
 <p align='center'>Um E-commerce de games mobile feito em React Native</p>
 
+## 💄Layout
+- [Layout no Figma](https://www.figma.com/file/0HULL0g3xYhs9zxusaeXvA/Games-Ecommerce?node-id=23:0)
+
 ## 🛠 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
