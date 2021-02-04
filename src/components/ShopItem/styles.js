@@ -8,7 +8,7 @@ export const ShopItemContainer = styled.View`
   border-radius: ${({ theme }) => theme.borderRadius};
   align-items: center;
   justify-content: space-between;
-  margin: 8px;
+  margin: 5px;
 `;
 
 ShopItemContainer.Image = styled.Image`

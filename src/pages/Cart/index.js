@@ -34,7 +34,12 @@ const Cart = ({ navigation }) => {
         extraData={cartExtraData}
         keyExtractor={item => String(item.id)}
         renderItem={({ item }) => (
-          <CartItem title={item.name} amount={item.amount} id={item.id} />
+          <CartItem
+            title={item.name}
+            amount={item.amount}
+            id={item.id}
+            price={item.price}
+          />
         )}
         style={{ width: '100%' }}
       />
