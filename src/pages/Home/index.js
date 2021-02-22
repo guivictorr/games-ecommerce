@@ -11,7 +11,7 @@ import CircleButton from '../../components/CircleButton';
 import Header from '../../components/Header';
 
 const Home = ({ navigation }) => {
-  const { cartData } = useContext(CartContext);
+  const { cartLength } = useContext(CartContext);
   const { products } = useContext(ProductsContext);
 
   const handleFiltersPageNavigation = () => {
@@ -30,7 +30,7 @@ const Home = ({ navigation }) => {
         </CircleButton>
         <CircleButton
           hasNotification
-          notificationElement={cartData.length}
+          notificationElement={cartLength}
           onPress={handleCartPageNavigation}
         >
           <AntDesign name="shoppingcart" size={32} color="white" />

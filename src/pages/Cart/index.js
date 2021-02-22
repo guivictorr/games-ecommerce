@@ -12,13 +12,7 @@ import HeaderContainer from '../../components/Header/styles';
 import CartContainer from './styles';
 
 const Cart = ({ navigation }) => {
-  const {
-    cartData,
-    cartExtraData,
-    cartSubTotal,
-    cartShipValue,
-    cartTotalValue,
-  } = useContext(CartContext);
+  const { cartData, cartValues } = useContext(CartContext);
 
   return (
     <CartContainer>
@@ -30,7 +24,7 @@ const Cart = ({ navigation }) => {
       </Header>
       <FlatList
         data={cartData}
-        extraData={cartExtraData}
+        extraData={cartData}
         keyExtractor={item => String(item.id)}
         renderItem={({ item }) => (
           <CartItem
@@ -48,13 +42,13 @@ const Cart = ({ navigation }) => {
         </CartContainer.Button>
         <CartContainer.PricesBox>
           <CartContainer.Price fontSize={26}>
-            Total: R${cartTotalValue}
+            Total: R${cartValues.cartTotalValue}
           </CartContainer.Price>
           <CartContainer.Price fontSize={18}>
-            Subtotal: R${cartSubTotal}
+            Subtotal: R${cartValues.cartSubTotal}
           </CartContainer.Price>
           <CartContainer.Price fontSize={16}>
-            Frete: R${cartShipValue}
+            Frete: R${cartValues.cartShipValue}
           </CartContainer.Price>
         </CartContainer.PricesBox>
       </CartContainer.Checkout>

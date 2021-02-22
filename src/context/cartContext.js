@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 import products from '../data/products.json';
 
@@ -6,99 +6,63 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartData, setCartData] = useState([]);
-  const [cartExtraData, setCartExtraData] = useState([]);
-  const [cartSubTotal, setCartSubTotal] = useState(0);
-  const [cartShipValue, setCartShipValue] = useState(0);
-  const [cartTotalValue, setCartTotalValue] = useState(0);
+  const [cartLength, setCartLength] = useState(0);
+  const [cartValues, setCartValues] = useState({
+    cartShipValue: 0,
+    cartTotalValue: 0,
+    cartSubTotalValue: 0,
+  });
 
-  const handleCartSubTotal = useCallback(() => {
-    let subTotal = 0;
-
-    cartData.map(product => {
-      subTotal += product.amount * product.price;
-    });
-
-    setCartSubTotal(subTotal.toFixed(2));
-  }, [cartData, setCartSubTotal]);
-
-  const handleCartShipValue = useCallback(() => {
-    let amount = 0;
-    let shipValue = 0;
+  const handleCartLength = () => {
+    let length = 0;
 
     cartData.map(product => {
-      amount += product.amount;
+      length += product.amount;
     });
 
-    if (cartSubTotal > 250) {
-      setCartShipValue(shipValue.toFixed(2));
+    setCartLength(length);
+  };
+
+  const handleAddProductsToCart = id => {
+    const newProduct = products.find(item => item.id === id);
+    const verifyProduct = cartData.find(item => newProduct.id === item.id);
+
+    if (verifyProduct) {
+      verifyProduct.amount += 1;
+      handleCartLength();
       return;
     }
 
-    shipValue = amount * 10;
-    setCartShipValue(shipValue.toFixed(2));
-  }, [cartData, setCartShipValue, cartSubTotal]);
+    newProduct.amount = 1;
+    setCartData([...cartData, newProduct]);
+  };
 
-  const handleAddProductsToCart = useCallback(
-    id => {
-      const newProduct = products.find(item => item.id === id);
-      const verifyProduct = cartData.find(item => newProduct.id === item.id);
+  const handleRemoveCartProducts = id => {
+    const productIndex = cartData.findIndex(item => item.id === id);
+    const product = cartData[productIndex];
 
-      if (verifyProduct) {
-        verifyProduct.amount += 1;
-        handleCartSubTotal();
-        handleCartShipValue();
-        return;
-      }
+    if (product.amount > 1) {
+      product.amount -= 1;
+      setCartData([...cartData]);
+      return;
+    }
 
-      newProduct.amount = 1;
-      setCartData([...cartData, newProduct]);
-      handleCartSubTotal();
-      handleCartShipValue();
-    },
-    [setCartData, products, cartData, handleCartSubTotal, handleCartShipValue],
-  );
-
-  const handleRemoveCartProducts = useCallback(
-    id => {
-      const productIndex = cartData.findIndex(item => item.id === id);
-      const { amount } = cartData[productIndex];
-
-      if (amount === 1) {
-        cartData.splice(productIndex, 1);
-        setCartData([...cartData]);
-        return;
-      }
-
-      cartData[productIndex].amount -= 1;
-      setCartExtraData([...cartData]);
-      handleCartSubTotal();
-      handleCartShipValue();
-    },
-    [
-      cartData,
-      setCartData,
-      setCartExtraData,
-      handleCartSubTotal,
-      handleCartShipValue,
-    ],
-  );
+    cartData.splice(productIndex, 1);
+    setCartData([...cartData]);
+  };
 
   useEffect(() => {
-    handleCartSubTotal();
-    handleCartShipValue();
-    setCartTotalValue(+cartSubTotal + +cartShipValue);
-  }, [cartData, handleCartShipValue, handleCartSubTotal, cartShipValue]);
+    handleCartLength();
+  }, [cartData]);
 
   return (
     <CartContext.Provider
       value={{
         cartData,
+        cartValues,
+        cartLength,
         handleAddProductsToCart,
         handleRemoveCartProducts,
-        cartExtraData,
-        cartSubTotal,
-        cartShipValue,
-        cartTotalValue: cartTotalValue.toFixed(2),
       }}
     >
       {children}
