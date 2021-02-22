@@ -45,7 +45,7 @@ const Cart = ({ navigation }) => {
             Total: R${cartValues.cartTotalValue}
           </CartContainer.Price>
           <CartContainer.Price fontSize={18}>
-            Subtotal: R${cartValues.cartSubTotal}
+            Subtotal: R${cartValues.cartSubTotalValue}
           </CartContainer.Price>
           <CartContainer.Price fontSize={16}>
             Frete: R${cartValues.cartShipValue}

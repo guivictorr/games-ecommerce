@@ -13,6 +13,30 @@ export const CartProvider = ({ children }) => {
     cartSubTotalValue: 0,
   });
 
+  const handleSubTotalValue = () => {
+    let subTotal = 0;
+
+    cartData.map(product => {
+      subTotal += product.amount * product.price;
+    });
+
+    return subTotal;
+  };
+
+  const handleCartValues = () => {
+    const subTotal = handleSubTotalValue();
+    const shipValue = subTotal > 250 ? 0 : cartLength * 10;
+    const cartTotal = shipValue + subTotal;
+
+    const newValues = {
+      cartShipValue: shipValue.toFixed(2),
+      cartSubTotalValue: subTotal.toFixed(2),
+      cartTotalValue: cartTotal.toFixed(2),
+    };
+
+    setCartValues(newValues);
+  };
+
   const handleCartLength = () => {
     let length = 0;
 
@@ -53,7 +77,12 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     handleCartLength();
+    handleCartValues();
   }, [cartData]);
+
+  useEffect(() => {
+    handleCartValues();
+  }, [cartLength]);
 
   return (
     <CartContext.Provider
