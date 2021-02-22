@@ -1,14 +1,15 @@
 import React, { useCallback, useContext } from 'react';
 import { FlatList } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+
 import { ProductsContext } from '../../context/productsContext';
 import { CartContext } from '../../context/cartContext';
-
-import { HomeContainer } from './styles';
 
 import ShopItem from '../../components/ShopItem';
 import CircleButton from '../../components/CircleButton';
 import Header from '../../components/Header';
+
+import { HomeContainer } from './styles';
 
 const Home = ({ navigation }) => {
   const { cartData } = useContext(CartContext);

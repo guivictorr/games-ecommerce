@@ -7,14 +7,12 @@ import Cart from '../pages/Cart';
 
 const { Screen, Navigator } = createStackNavigator();
 
-const MainStackRoutes = () => {
-  return (
-    <Navigator headerMode="none">
-      <Screen name="Home" component={Home} />
-      <Screen name="Filters" component={Filters} />
-      <Screen name="Cart" component={Cart} />
-    </Navigator>
-  );
-};
+const MainStackRoutes = () => (
+  <Navigator headerMode="none">
+    <Screen name="Home" component={Home} />
+    <Screen name="Filters" component={Filters} />
+    <Screen name="Cart" component={Cart} />
+  </Navigator>
+);
 
 export default MainStackRoutes;

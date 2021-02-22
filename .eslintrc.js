@@ -28,5 +28,6 @@ module.exports = {
     'react/prop-types': 'off',
     'import/no-named-as-default': 'off',
     camelcase: 'off',
+    'array-callback-return': 'off',
   },
 };

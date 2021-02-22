@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { CartContext } from '../../context/cartContext';
 
+import { CartContext } from '../../context/cartContext';
 import images from '../../utils/images';
 
-import ShopItemContainer from './styles';
-
 import RoundedButton from '../RoundedButton';
+
+import ShopItemContainer from './styles';
 
 const ShopItem = ({ title, price, id }) => {
   const { handleAddProductsToCart } = useContext(CartContext);

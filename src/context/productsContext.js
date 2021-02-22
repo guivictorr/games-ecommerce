@@ -31,6 +31,8 @@ export const ProductsProvider = ({ children }) => {
           const decScoreOrder = productsData.sort((a, b) => a.score < b.score);
           setSortedProducts(decScoreOrder);
           break;
+        default:
+          setSortedProducts(alphabeticOrder);
       }
     },
     [productsData, setSortedProducts],

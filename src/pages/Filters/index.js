@@ -1,10 +1,12 @@
 import React, { useCallback, useContext } from 'react';
 import { FlatList } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+
+import { ProductsContext } from '../../context/productsContext';
+
 import CircleButton from '../../components/CircleButton';
 import Header from '../../components/Header';
 import HeaderContainer from '../../components/Header/styles';
-import { ProductsContext } from '../../context/productsContext';
 
 import FiltersContainer from './styles';
 

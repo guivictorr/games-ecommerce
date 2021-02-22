@@ -11,51 +11,6 @@ export const CartProvider = ({ children }) => {
   const [cartShipValue, setCartShipValue] = useState(0);
   const [cartTotalValue, setCartTotalValue] = useState(0);
 
-  const handleAddProductsToCart = useCallback(
-    id => {
-      const newProduct = products.find(item => item.id === id);
-      const verifyProduct = cartData.find(item => newProduct.id === item.id);
-
-      if (verifyProduct) {
-        verifyProduct.amount++;
-        handleCartSubTotal();
-        handleCartShipValue();
-        return;
-      }
-
-      newProduct.amount = 1;
-      setCartData([...cartData, newProduct]);
-      handleCartSubTotal();
-      handleCartShipValue();
-    },
-    [setCartData, products, cartData, handleCartSubTotal, handleCartShipValue],
-  );
-
-  const handleRemoveCartProducts = useCallback(
-    id => {
-      const productIndex = cartData.findIndex(item => item.id === id);
-      const amount = cartData[productIndex].amount;
-
-      if (amount === 1) {
-        cartData.splice(productIndex, 1);
-        setCartData([...cartData]);
-        return;
-      }
-
-      cartData[productIndex].amount -= 1;
-      setCartExtraData([...cartData]);
-      handleCartSubTotal();
-      handleCartShipValue();
-    },
-    [
-      cartData,
-      setCartData,
-      setCartExtraData,
-      handleCartSubTotal,
-      handleCartShipValue,
-    ],
-  );
-
   const handleCartSubTotal = useCallback(() => {
     let subTotal = 0;
 
@@ -82,6 +37,51 @@ export const CartProvider = ({ children }) => {
     shipValue = amount * 10;
     setCartShipValue(shipValue.toFixed(2));
   }, [cartData, setCartShipValue, cartSubTotal]);
+
+  const handleAddProductsToCart = useCallback(
+    id => {
+      const newProduct = products.find(item => item.id === id);
+      const verifyProduct = cartData.find(item => newProduct.id === item.id);
+
+      if (verifyProduct) {
+        verifyProduct.amount += 1;
+        handleCartSubTotal();
+        handleCartShipValue();
+        return;
+      }
+
+      newProduct.amount = 1;
+      setCartData([...cartData, newProduct]);
+      handleCartSubTotal();
+      handleCartShipValue();
+    },
+    [setCartData, products, cartData, handleCartSubTotal, handleCartShipValue],
+  );
+
+  const handleRemoveCartProducts = useCallback(
+    id => {
+      const productIndex = cartData.findIndex(item => item.id === id);
+      const { amount } = cartData[productIndex];
+
+      if (amount === 1) {
+        cartData.splice(productIndex, 1);
+        setCartData([...cartData]);
+        return;
+      }
+
+      cartData[productIndex].amount -= 1;
+      setCartExtraData([...cartData]);
+      handleCartSubTotal();
+      handleCartShipValue();
+    },
+    [
+      cartData,
+      setCartData,
+      setCartExtraData,
+      handleCartSubTotal,
+      handleCartShipValue,
+    ],
+  );
 
   useEffect(() => {
     handleCartSubTotal();

@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import { FlatList } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import { CartContext } from '../../context/cartContext';
 
-import CartContainer from './styles';
+import { CartContext } from '../../context/cartContext';
 
 import CartItem from '../../components/CartItem';
 import Header from '../../components/Header';
 import CircleButton from '../../components/CircleButton';
 import HeaderContainer from '../../components/Header/styles';
+
+import CartContainer from './styles';
 
 const Cart = ({ navigation }) => {
   const {
