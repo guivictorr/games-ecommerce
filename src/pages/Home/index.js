@@ -1,31 +1,26 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useContext } from 'react';
 import { FlatList } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-
 import { ProductsContext } from '../../context/productsContext';
 import { CartContext } from '../../context/cartContext';
+
+import { HomeContainer } from './styles';
 
 import ShopItem from '../../components/ShopItem';
 import CircleButton from '../../components/CircleButton';
 import Header from '../../components/Header';
 
-import { HomeContainer } from './styles';
-
 const Home = ({ navigation }) => {
   const { cartData } = useContext(CartContext);
-  const { products, sortedProducts, setSortedProducts } = useContext(
-    ProductsContext,
-  );
+  const { products } = useContext(ProductsContext);
 
-  const handleFiltersPageNavigation = useCallback(() => {
+  const handleFiltersPageNavigation = () => {
     navigation.navigate('Filters');
-    setSortedProducts([]);
-  }, [navigation]);
+  };
 
-  const handleCartPageNavigation = useCallback(() => {
+  const handleCartPageNavigation = () => {
     navigation.navigate('Cart');
-    setSortedProducts([]);
-  }, [navigation]);
+  };
 
   return (
     <HomeContainer>
@@ -43,7 +38,7 @@ const Home = ({ navigation }) => {
       </Header>
       <FlatList
         data={products}
-        extraData={sortedProducts}
+        extraData={products}
         keyExtractor={item => item.id}
         showsVerticalScrollIndicator={false}
         numColumns={2}
