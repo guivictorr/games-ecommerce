@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { FlatList } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { FlatList, Modal } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { ProductsContext } from '../../context/productsContext';
 import { CartContext } from '../../context/cartContext';
@@ -9,13 +9,15 @@ import { HomeContainer } from './styles';
 import ShopItem from '../../components/ShopItem';
 import CircleButton from '../../components/CircleButton';
 import Header from '../../components/Header';
+import Filters from '../../components/Filters';
 
 const Home = ({ navigation }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const { cartLength } = useContext(CartContext);
   const { products } = useContext(ProductsContext);
 
   const handleFiltersPageNavigation = () => {
-    navigation.navigate('Filters');
+    setIsOpen(!isOpen);
   };
 
   const handleCartPageNavigation = () => {
@@ -51,6 +53,15 @@ const Home = ({ navigation }) => {
           />
         )}
       />
+
+      <Modal
+        visible={isOpen}
+        animationType="slide"
+        statusBarTranslucent
+        transparent
+      >
+        <Filters closeModal={() => setIsOpen(false)} />
+      </Modal>
     </HomeContainer>
   );
 };
